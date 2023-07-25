@@ -1,17 +1,14 @@
 package main
 
-import (
-	"net/http"
+import "github.com/gin-gonic/gin"
 
-	"github.com/gin-gonic/gin"
-)
+
+var Db []Recipe = initDB()
 
 func main() {
 	r := gin.Default()
 
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"hello": "World"})
-	})
+	routes(r)
 
 	r.Run()
 }
