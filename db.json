@@ -1,0 +1,46 @@
+[
+    {
+        "Id": 1,
+        "Name": "Pão Caseiro",
+        "Ingredients": [
+            { "What": "farinha de trigo", "Amount": "1kg" },
+            { "What": "água morna", "Amount": "1/2 xícara" },
+            { "What": "açúcar", "Amount": "4 colheres de sopa" },
+            { "What": "ovo", "Amount": "2" },
+            { "What": "leite morno", "Amount": "1.5 xícaras" },
+            { "What": "óleo", "Amount": "1.5 xícaras" },
+            { "What": "sal", "Amount": "1 colher de sopa" },
+            { "What": "fermento biológico", "Amount": "30g" }
+        ],
+        "Preparation": "Em uma tigela, dissolva o fermento no açúcar e acrescente o sal, os ingredientes líquidos, os ovos e misture muito bem. Acrescente aos poucos a farinha até formar uma massa macia e sove bem a massa. Deixe a massa descansar por aproximadamente 1 hora. Após o crescimento, divida a massa, enrole da forma que desejar, coloque nas formas e deixe crescer até dobrar de volume. Leve para assar em forno médio (200° C), preaquecido, por aproximadamente 30 minutos. Retire o pão do forno e pincele leite para a casca ficar mais macia."
+    },
+    {
+        "Id": 2,
+        "Name": "Chocolate Quente Cremoso",
+        "Ingredients": [
+            { "What": "leite", "Amount": "2 colheres de sopa" },
+            { "What": "chocolate em pó", "Amount": "3 colheres de sopa" },
+            { "What": "canela em pau", "Amount": "1" },
+            { "What": "amido de milho", "Amount": "1 colher de sopa" },
+            { "What": "açúcar", "Amount": "4 colher de sopa" },
+            { "What": "creme de leite", "Amount": "1 caixinha" }
+        ],
+        "Preparation": "Em um liquidificador, bata o leite, o amido de milho, o chocolate em pó e o açúcar. Despeje a mistura em uma panela com a canela e leve ao fogo baixo, mexendo sempre até ferver. Desligue, adicione o creme de leite e mexa bem até obter uma mistura homogênea. Retire a canela e sirva quente."
+    },
+    {
+        "Id": 3,
+        "Name": "Bolinho de Arroz",
+        "Ingredients": [
+            { "What": "arroz cozido", "Amount": "3 colheres de sopa" },
+            { "What": "leite", "Amount": "2 colheres de sopa" },
+            { "What": "fermento em pó", "Amount": "1" },
+            { "What": "farinha de trigo", "Amount": "1 colher de sopa" },
+            { "What": "óleo", "Amount": "4 colher de sopa" },
+            { "What": "queijo ralado", "Amount": "1 caixinha" },
+            { "What": "cheiro-verde picado", "Amount": "1 caixinha" },
+            { "What": "amido de milho", "Amount": "1 caixinha" },
+            { "What": "ovo", "Amount": "1 caixinha" }
+        ],
+        "Preparation": "Em um recipiente, misture todos os ingredientes até criar uma massa firme e encorpada. Molde os bolinhos e frite-os no óleo quente, até que fiquem dourados. Escorra sobre papel absorvente."
+    }
+]
