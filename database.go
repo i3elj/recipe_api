@@ -18,6 +18,7 @@ type Recipe struct {
 	Id          uint
 	Name        string
 	Ingredients []Ingredient
+	Image_url   string
 	Preparation string
 }
 
