@@ -12,6 +12,7 @@
             { "What": "sal", "Amount": "1 colher de sopa" },
             { "What": "fermento biológico", "Amount": "30g" }
         ],
+        "Image_url": "pao-caseiro.jpg",
         "Preparation": "Em uma tigela, dissolva o fermento no açúcar e acrescente o sal, os ingredientes líquidos, os ovos e misture muito bem. Acrescente aos poucos a farinha até formar uma massa macia e sove bem a massa. Deixe a massa descansar por aproximadamente 1 hora. Após o crescimento, divida a massa, enrole da forma que desejar, coloque nas formas e deixe crescer até dobrar de volume. Leve para assar em forno médio (200° C), preaquecido, por aproximadamente 30 minutos. Retire o pão do forno e pincele leite para a casca ficar mais macia."
     },
     {
@@ -25,6 +26,7 @@
             { "What": "açúcar", "Amount": "4 colher de sopa" },
             { "What": "creme de leite", "Amount": "1 caixinha" }
         ],
+        "Image_url": "chocolate-quente-cremoso.jpeg",
         "Preparation": "Em um liquidificador, bata o leite, o amido de milho, o chocolate em pó e o açúcar. Despeje a mistura em uma panela com a canela e leve ao fogo baixo, mexendo sempre até ferver. Desligue, adicione o creme de leite e mexa bem até obter uma mistura homogênea. Retire a canela e sirva quente."
     },
     {
@@ -41,6 +43,7 @@
             { "What": "amido de milho", "Amount": "1 caixinha" },
             { "What": "ovo", "Amount": "1 caixinha" }
         ],
+        "Image_url": "bolinho-de-arroz.jpeg",
         "Preparation": "Em um recipiente, misture todos os ingredientes até criar uma massa firme e encorpada. Molde os bolinhos e frite-os no óleo quente, até que fiquem dourados. Escorra sobre papel absorvente."
     }
 ]
