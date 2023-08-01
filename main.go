@@ -7,6 +7,7 @@ var Db []Recipe = initDB()
 
 func main() {
 	r := gin.Default()
+	r.Static("/assets", "./assets")
 
 	routes(r)
 
