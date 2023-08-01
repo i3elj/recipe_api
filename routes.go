@@ -13,9 +13,50 @@ import (
 func routes(r *gin.Engine) {
 	r.GET("/api/recipes", get_recipes_with_search)
 	r.GET("/api/recipe/:id", get_recipe_by_id)
+	r.POST("/api/recipe", post_recipe)
 	r.DELETE("/api/recipe/:id", delete_recipe_by_id)
 	r.PUT("/api/recipe/:id", update_recipe_by_id)
-	r.POST("/api/recipe", post_recipe)
+}
+
+/*
+API endpoint: /api/recipes
+
+Method: GET
+
+Examples:
+
+  - /api/recipes
+  - ?name=Pão Caseiro
+  - ?ingredients=ovo,leite,açúcar
+*/
+func get_recipes_with_search(c *gin.Context) {
+	name := c.Query("name")
+	ingredients := strings.Split(c.Query("ingredients"), ",")
+
+	// if there's no query parameters:
+	if name == "" && len(ingredients) <= 1 {
+		recipes := initDB()
+
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.JSON(http.StatusOK, recipes)
+		return
+	}
+
+	var results []Recipe
+
+	for _, recipe := range Db {
+		if recipe.Name == name {
+			results = append(results, recipe)
+		}
+
+		for _, ingredient := range ingredients {
+			if has_ing(recipe.Ingredients, ingredient) {
+				results = append(results, recipe)
+			}
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{"results": results})
 }
 
 /*
@@ -47,51 +88,26 @@ func get_recipe_by_id(c *gin.Context) {
 	}
 
 	if found_it {
-		c.JSON(http.StatusOK, gin.H{"recipe": recipe})
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.JSON(http.StatusOK, recipe)
 	} else {
-		c.JSON(http.StatusOK, gin.H{"not found": "404 :("})
+		c.JSON(http.StatusNotFound, gin.H{"not found": "404 :("})
 	}
 }
 
 /*
-API endpoint: /api/recipes
+API endpoint: /api/recipe/img/:url
 
 Method: GET
 
 Examples:
 
-  - /api/recipes
-  - ?name=Pão Caseiro
-  - ?ingredients=ovo,leite,açúcar
+  - /api/recipe/img/image_number_one.png
 */
-func get_recipes_with_search(c *gin.Context) {
-	name := c.Query("name")
-	ingredients := strings.Split(c.Query("ingredients"), ",")
-
-	if name == "" && len(ingredients) <= 1 {
-		recipes := initDB()
-
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-		c.JSON(http.StatusOK, recipes)
-		return
-	}
-
-	var results []Recipe
-
-	for _, recipe := range Db {
-		if recipe.Name == name {
-			results = append(results, recipe)
-		}
-
-		for _, ingredient := range ingredients {
-			if has_ing(recipe.Ingredients, ingredient) {
-				results = append(results, recipe)
-			}
-		}
-	}
-
-	c.JSON(http.StatusOK, gin.H{"results": results})
-}
+// func get_recipes_image(c *gin.Context) {
+// 	image_name := c.Query("name")
+// 	gin.Default().Static("./assets/"+image_name, "./assets/")
+// }
 
 /*
 API endpoint: /api/recipe
