@@ -25,38 +25,41 @@ Method: GET
 
 Examples:
 
-  - /api/recipes
-  - ?name=Pão Caseiro
-  - ?ingredients=ovo,leite,açúcar
+	/api/recipes
+	?name=Pão Caseiro
+	?ingredients=ovo,leite,açúcar
 */
 func get_recipes_with_search(c *gin.Context) {
 	name := c.Query("name")
-	ingredients := strings.Split(c.Query("ingredients"), ",")
+	ingredients := c.Query("ingredients")
 
-	// if there's no query parameters:
-	if name == "" && len(ingredients) <= 1 {
-		recipes := initDB()
+	name_is_not_set := name == ""
+	ingredients_is_not_set := ingredients == ""
 
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+
+	recipes := initDB()
+
+	if name_is_not_set && ingredients_is_not_set {
 		c.JSON(http.StatusOK, recipes)
 		return
 	}
 
 	var results []Recipe
 
-	for _, recipe := range Db {
+	for _, recipe := range recipes {
 		if recipe.Name == name {
 			results = append(results, recipe)
 		}
 
-		for _, ingredient := range ingredients {
+		for _, ingredient := range strings.Split(ingredients, ",") {
 			if has_ing(recipe.Ingredients, ingredient) {
 				results = append(results, recipe)
 			}
 		}
 	}
 
-	c.JSON(http.StatusOK, gin.H{"results": results})
+	c.JSON(http.StatusOK, results)
 }
 
 /*
@@ -76,12 +79,13 @@ func get_recipe_by_id(c *gin.Context) {
 		log.Fatal("We couldn't convert your string. Sorry :( :\n\t", err)
 	}
 
+	recipes := initDB()
 	var recipe Recipe
 	found_it := false
 
-	for i := 0; i < len(Db); i++ {
-		if Db[i].Id == uint(id) {
-			recipe = Db[i]
+	for i := 0; i < len(recipes); i++ {
+		if recipes[i].Id == uint(id) {
+			recipe = recipes[i]
 			found_it = true
 			break
 		}
